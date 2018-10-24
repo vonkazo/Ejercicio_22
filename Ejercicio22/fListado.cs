@@ -15,33 +15,52 @@ namespace Ejercicio22
         fAmerica america;
         fAsia asia;
         fEuropa europa;
+        fListado listado;
         public fListado()
         {
             InitializeComponent();
             frPrincipal.listado = this;
-            america = frPrincipal.america;
-            asia = frPrincipal.asia;
-            europa = frPrincipal.europa;
         }
 
         private void fListado_Activated(object sender, EventArgs e)
         {
             lbListado.Items.Clear();
 
-            foreach (string pais in america.lbAmerica.SelectedItems)
+            foreach (Form v in Application.OpenForms)
             {
-                lbListado.Items.Add(pais);
+                if (v.Text == "Europa")
+                {
+                    foreach (string pais in frPrincipal.europa.lbEuropa.SelectedItems)
+                    {
+                        lbListado.Items.Add(pais);
+
+                    }
+                    break;
+                }
             }
 
-            foreach (string pais in asia.lbAsia.SelectedItems)
+            foreach (Form v in Application.OpenForms)
             {
-                lbListado.Items.Add(pais);
+                if (v.Text == "Asia")
+                {
+                    foreach (string pais in frPrincipal.asia.lbAsia.SelectedItems)
+                    {
+                        lbListado.Items.Add(pais);
+                    }
+                    break;
+                }
             }
 
-            foreach (string pais in europa.lbEuropa.SelectedItems)
+            foreach (Form v in Application.OpenForms)
             {
-                lbListado.Items.Add(pais);
-                
+                if (v.Text == "America")
+                {
+                    foreach (string pais in frPrincipal.america.lbAmerica.SelectedItems)
+                    {
+                        lbListado.Items.Add(pais);
+                    }
+                    break;
+                }
             }
         }
     }
